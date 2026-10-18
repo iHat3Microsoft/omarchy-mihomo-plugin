@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Config = the handwritten yaml the core is running, plus rule-providers.
 // Node lists live on the proxy page; this page is the file and the rule sets.
@@ -9,7 +10,7 @@ Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property bool customizeNetwork: false
   property bool showAdvancedNetwork: false
@@ -88,7 +89,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshConfig") : "Reload the file info and rule providers"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc !== null && !root.svc.configLoading && !root.svc.providersLoading
       onClicked: root.svc.refreshConfig()
@@ -268,7 +269,7 @@ Item {
             if (root.svc.tunDnsHijack !== "") parts.push(root.svc.t("tunDNSHijack") + ": " + root.svc.tunDnsHijack)
             return parts.join(" · ")
           }
-          valueColor: root.svc && root.svc.tunEnabled ? Color.accent : Util.alpha(root.fg, 0.75)
+          valueColor: root.svc && root.svc.tunEnabled ? Commons.Color.accent : Util.alpha(root.fg, 0.75)
           foreground: root.fg
           fontFamily: root.fontFamily
           valueBold: true
@@ -342,7 +343,7 @@ Item {
             width: (parent.width - Style.space(12)) / 2
             placeholderText: "7890"
             foreground: root.fg
-            accent: Color.accent
+            accent: Commons.Color.accent
             font.family: root.fontFamily
             font.pixelSize: Style.font.bodySmall
             enabled: root.svc && !root.svc.managerSettingsMutating
@@ -472,7 +473,7 @@ Item {
             width: (parent.width - Style.space(12)) / 2
             placeholderText: root.svc ? root.svc.t("dnsFakeIPRange") : "Fake-IP range"
             foreground: root.fg
-            accent: Color.accent
+            accent: Commons.Color.accent
             font.family: root.fontFamily
             font.pixelSize: Style.font.bodySmall
             enabled: root.svc && root.managerIsManaged("dns") && !root.svc.managerSettingsMutating
@@ -497,7 +498,7 @@ Item {
           width: parent.width
           placeholderText: root.svc ? root.svc.t("dnsDefaultNameserver") : "Bootstrap nameservers"
           foreground: root.fg
-          accent: Color.accent
+          accent: Commons.Color.accent
           font.family: root.fontFamily
           font.pixelSize: Style.font.bodySmall
           enabled: root.svc && root.managerIsManaged("dns") && !root.svc.managerSettingsMutating
@@ -509,7 +510,7 @@ Item {
           width: parent.width
           placeholderText: root.svc ? root.svc.t("dnsNameserver") : "Nameservers"
           foreground: root.fg
-          accent: Color.accent
+          accent: Commons.Color.accent
           font.family: root.fontFamily
           font.pixelSize: Style.font.bodySmall
           enabled: root.svc && root.managerIsManaged("dns") && !root.svc.managerSettingsMutating
@@ -521,7 +522,7 @@ Item {
           width: parent.width
           placeholderText: root.svc ? root.svc.t("dnsProxyNameserver") : "Proxy nameservers"
           foreground: root.fg
-          accent: Color.accent
+          accent: Commons.Color.accent
           font.family: root.fontFamily
           font.pixelSize: Style.font.bodySmall
           enabled: root.svc && root.managerIsManaged("dns") && !root.svc.managerSettingsMutating
@@ -533,7 +534,7 @@ Item {
           width: parent.width
           placeholderText: root.svc ? root.svc.t("dnsFakeIPFilter") : "Fake-IP filter"
           foreground: root.fg
-          accent: Color.accent
+          accent: Commons.Color.accent
           font.family: root.fontFamily
           font.pixelSize: Style.font.bodySmall
           enabled: root.svc && root.managerIsManaged("dns") && !root.svc.managerSettingsMutating
@@ -625,7 +626,7 @@ Item {
             width: (parent.width - Style.space(12)) / 2
             placeholderText: root.svc ? root.svc.t("tunDNSHijack") : "DNS hijack"
             foreground: root.fg
-            accent: Color.accent
+            accent: Commons.Color.accent
             font.family: root.fontFamily
             font.pixelSize: Style.font.bodySmall
             enabled: root.svc && root.managerIsManaged("tun") && !root.svc.managerSettingsMutating
@@ -709,7 +710,7 @@ Item {
             iconText: "󰑐"
             tooltipText: root.svc ? root.svc.t("updateRuleSet") : "Fetch this rule provider again"
             foreground: root.fg
-            hoverColor: Color.accent
+            hoverColor: Commons.Color.accent
             fontFamily: root.fontFamily
             enabled: modelData.vehicleType !== "Inline"
             onClicked: root.svc.updateRuleProvider(modelData.name)

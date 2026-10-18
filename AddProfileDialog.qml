@@ -2,11 +2,12 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Popup {
   id: root
   property var svc: null
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string mode: "remote"
   property string profileId: ""
   property string profileName: ""
@@ -24,7 +25,7 @@ Popup {
   width: Style.space(420)
   anchors.centerIn: Overlay.overlay
 
-  background: Rectangle { color: Color.popups.background; radius: Style.cornerRadius; border.width: 1; border.color: Util.alpha(root.foreground,0.2) }
+  background: Rectangle { color: Commons.Color.popups.background; radius: Style.cornerRadius; border.width: 1; border.color: Util.alpha(root.foreground,0.2) }
   Column {
     width: parent.width; spacing: Style.space(10)
     Text { text: root.operationTitle; color: root.foreground; font.family: root.fontFamily; font.pixelSize: Style.font.subtitle; font.bold: true }

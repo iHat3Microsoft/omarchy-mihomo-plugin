@@ -1,6 +1,7 @@
 import QtQuick
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Rule / Global / Direct. Writes straight through to PATCH /configs, which is what
 // every other mihomo front-end does, so switching here is visible everywhere.
@@ -8,7 +9,7 @@ Row {
   id: root
 
   property var svc: null
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   spacing: Style.space(8)

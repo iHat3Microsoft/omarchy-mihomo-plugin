@@ -3,6 +3,7 @@ import Quickshell
 import Quickshell.Io
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Bar widget + control panel for the mihomo core.
 //
@@ -20,7 +21,7 @@ Panel {
     ? ServiceStore.instance
     : (bar && bar.shell && typeof bar.shell.serviceFor === "function" ? bar.shell.serviceFor(root.moduleName) : null)
 
-  readonly property color fg: bar ? bar.foreground : Color.popups.text
+  readonly property color fg: bar ? bar.foreground : Commons.Color.popups.text
   readonly property string fontFamily: bar ? bar.fontFamily : Style.font.family
 
   property string page: "home"
@@ -127,7 +128,7 @@ Panel {
       Text {
         anchors.verticalCenter: parent.verticalCenter
         text: "󰖂"
-        color: root.connected ? button.foreground : Color.urgent
+        color: root.connected ? button.foreground : Commons.Color.urgent
         font.family: button.fontFamily
         font.pixelSize: Style.bar.iconFont
         renderType: Text.NativeRendering
@@ -149,7 +150,7 @@ Panel {
       visible: button.vertical
       anchors.centerIn: parent
       text: "󰖂"
-      color: root.connected ? button.foreground : Color.urgent
+      color: root.connected ? button.foreground : Commons.Color.urgent
       font.family: button.fontFamily
       font.pixelSize: Style.bar.iconFont
       renderType: Text.NativeRendering
@@ -223,7 +224,7 @@ Panel {
               anchors.left: parent.left
               anchors.verticalCenter: parent.verticalCenter
               text: "󰖂"
-              color: root.connected ? Color.accent : Color.urgent
+              color: root.connected ? Commons.Color.accent : Commons.Color.urgent
               font.family: root.fontFamily
               font.pixelSize: Style.font.heading
               renderType: Text.NativeRendering
@@ -406,17 +407,17 @@ Panel {
 
         // Transient confirmation for writes, so a node switch or a reload
         // is visibly acknowledged without a modal.
-        Rectangle {
-          id: toast
-          anchors.horizontalCenter: parent.horizontalCenter
-          anchors.bottom: parent.bottom
-          anchors.bottomMargin: Style.space(10)
-          width: Math.min(toastText.implicitWidth + Style.space(24), pageHost.width)
-          height: toastText.implicitHeight + Style.space(12)
-          radius: Style.cornerRadius
-          color: Color.popups.background
-          border.width: 1
-          border.color: Util.alpha(Color.accent, 0.5)
+          Rectangle {
+            id: toast
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Style.space(10)
+            width: Math.min(toastText.implicitWidth + Style.space(24), pageHost.width)
+            height: toastText.implicitHeight + Style.space(12)
+            radius: Style.cornerRadius
+            color: Commons.Color.popups.background
+            border.width: 1
+            border.color: Util.alpha(Commons.Color.accent, 0.5)
           opacity: root.svc && root.svc.notice !== "" ? 1.0 : 0
           visible: opacity > 0
 
@@ -469,7 +470,7 @@ Panel {
 
     height: Style.space(34)
     radius: Style.cornerRadius
-    color: selected ? Util.alpha(Color.accent, 0.16)
+    color: selected ? Util.alpha(Commons.Color.accent, 0.16)
       : navMouse.containsMouse ? Util.alpha(root.fg, 0.07)
       : "transparent"
 
@@ -489,7 +490,7 @@ Panel {
       width: Style.space(2)
       height: parent.height * 0.55
       radius: width
-      color: Color.accent
+      color: Commons.Color.accent
       visible: nav.selected
     }
 
@@ -499,7 +500,7 @@ Panel {
       anchors.leftMargin: Style.space(12)
       anchors.verticalCenter: parent.verticalCenter
       text: nav.glyph
-      color: nav.selected ? Color.accent : Util.alpha(root.fg, 0.7)
+      color: nav.selected ? Commons.Color.accent : Util.alpha(root.fg, 0.7)
       font.family: root.fontFamily
       font.pixelSize: Style.font.icon
       renderType: Text.NativeRendering
@@ -513,7 +514,7 @@ Panel {
       anchors.verticalCenter: parent.verticalCenter
       text: nav.title
       textFormat: Text.PlainText
-      color: nav.selected ? Color.accent : Util.alpha(root.fg, 0.85)
+      color: nav.selected ? Commons.Color.accent : Util.alpha(root.fg, 0.85)
       font.family: root.fontFamily
       font.pixelSize: Style.font.bodySmall
       font.bold: nav.selected

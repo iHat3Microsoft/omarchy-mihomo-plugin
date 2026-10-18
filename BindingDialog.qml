@@ -3,12 +3,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Popup {
   id: root
 
   property var svc: null
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   modal: true
@@ -18,7 +19,7 @@ Popup {
   height: Style.space(350)
   anchors.centerIn: Overlay.overlay
   background: Rectangle {
-    color: Color.popups.background
+    color: Commons.Color.popups.background
     radius: Style.cornerRadius
     border.width: 1
     border.color: Util.alpha(root.foreground, 0.2)

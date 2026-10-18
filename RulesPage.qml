@@ -3,12 +3,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property string filter: ""
   property string editingRuleId: ""
@@ -83,8 +84,8 @@ Item {
 
   function targetColor(target) {
     if (target === "DIRECT") return Util.alpha(root.fg, 0.6)
-    if (target === "REJECT" || target === "REJECT-DROP") return Color.urgent
-    return Color.accent
+    if (target === "REJECT" || target === "REJECT-DROP") return Commons.Color.urgent
+    return Commons.Color.accent
   }
 
   function openAdd() {
@@ -210,7 +211,7 @@ Item {
     height: Math.min(Style.space(560), Math.max(Style.space(260), root.height - Style.space(24)))
     anchors.centerIn: Overlay.overlay
     background: Rectangle {
-      color: Color.popups.background
+      color: Commons.Color.popups.background
       radius: Style.cornerRadius
       border.width: 1
       border.color: Util.alpha(root.fg, 0.2)
@@ -314,7 +315,7 @@ Item {
               iconText: "󰏫"
               tooltipText: root.svc ? root.svc.t("editRule") : "Edit rule"
               foreground: root.fg
-              hoverColor: Color.accent
+              hoverColor: Commons.Color.accent
               fontFamily: root.fontFamily
               enabled: root.svc && !root.svc.profileMutating
               onClicked: root.openEdit(modelData)
@@ -326,7 +327,7 @@ Item {
                 ? root.svc.t(modelData.enabled === false ? "enableRule" : "disableRule")
                 : (modelData.enabled === false ? "Enable" : "Disable")
               foreground: root.fg
-              hoverColor: Color.accent
+              hoverColor: Commons.Color.accent
               fontFamily: root.fontFamily
               enabled: root.svc && !root.svc.profileMutating
               onClicked: modelData.enabled === false
@@ -338,7 +339,7 @@ Item {
               iconText: "󰆴"
               tooltipText: root.svc ? root.svc.t("deleteRule") : "Delete rule"
               foreground: root.fg
-              hoverColor: Color.urgent
+              hoverColor: Commons.Color.urgent
               fontFamily: root.fontFamily
               enabled: root.svc && !root.svc.profileMutating
               onClicked: root.removeRule(modelData)
@@ -378,7 +379,7 @@ Item {
       iconText: "󰐕"
       tooltipText: root.svc ? root.svc.t("addRule") : "Add rule"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating
       onClicked: root.openAdd()
@@ -388,7 +389,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshRules") : "Reload rules"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc && root.svc.connected && !root.svc.rulesLoading
       onClicked: {
@@ -552,7 +553,7 @@ Item {
                 iconText: "󰏫"
                 tooltipText: root.svc ? root.svc.t("editRule") : "Edit rule"
                 foreground: root.fg
-                hoverColor: Color.accent
+                hoverColor: Commons.Color.accent
                 fontFamily: root.fontFamily
                 enabled: root.svc && !root.svc.profileMutating
                 onClicked: root.openEdit(modelData)
@@ -564,7 +565,7 @@ Item {
                   ? root.svc.t(modelData.enabled === false ? "enableRule" : "disableRule")
                   : (modelData.enabled === false ? "Enable" : "Disable")
                 foreground: root.fg
-                hoverColor: Color.accent
+                hoverColor: Commons.Color.accent
                 fontFamily: root.fontFamily
                 enabled: root.svc && !root.svc.profileMutating
                 onClicked: modelData.enabled === false
@@ -576,7 +577,7 @@ Item {
                 iconText: "󰆴"
                 tooltipText: root.svc ? root.svc.t("deleteRule") : "Delete rule"
                 foreground: root.fg
-                hoverColor: Color.urgent
+                hoverColor: Commons.Color.urgent
                 fontFamily: root.fontFamily
                 enabled: root.svc && !root.svc.profileMutating
                 onClicked: root.removeRule(modelData)
@@ -614,7 +615,7 @@ Item {
           width: parent.width
           placeholderText: root.svc ? root.svc.t("searchEffectiveRulesHint") : "Search the active configuration's rules"
           foreground: root.fg
-          accent: Color.accent
+          accent: Commons.Color.accent
           font.family: root.fontFamily
           font.pixelSize: Style.font.bodySmall
           onTextChanged: root.filter = text

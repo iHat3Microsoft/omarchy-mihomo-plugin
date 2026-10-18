@@ -2,11 +2,12 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property var openRules: null
 
@@ -113,7 +114,7 @@ Item {
                      Math.max(Style.space(220), Overlay.overlay ? Overlay.overlay.height - Style.space(32) : Style.space(420)))
     anchors.centerIn: Overlay.overlay
     background: Rectangle {
-      color: Color.popups.background
+      color: Commons.Color.popups.background
       radius: Style.cornerRadius
       border.width: 1
       border.color: Util.alpha(root.fg, 0.2)
@@ -251,7 +252,7 @@ Item {
       iconText: "󰐕"
       tooltipText: root.svc ? root.svc.t("addProfile") : "Add profile"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating
       onClicked: { addDialog.mode = "remote"; addDialog.open() }
@@ -260,7 +261,7 @@ Item {
       iconText: "󰆍"
       tooltipText: root.svc ? root.svc.t("importCurrentConfig") : "Import current config"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc && root.svc.managerInstalled && root.svc.connected && !root.svc.profileMutating
       onClicked: { importDialog.open() }
@@ -278,7 +279,7 @@ Item {
       ? root.svc.t("profileActionInProgress")
       : root.svc ? root.svc.profileError : ""
     textFormat: Text.PlainText
-    color: Color.urgent
+    color: Commons.Color.urgent
     font.family: root.fontFamily
     font.pixelSize: Style.font.caption
     wrapMode: Text.WordWrap
@@ -293,17 +294,17 @@ Item {
       width: ListView.view.width; height: modelData.lastError ? Style.space(82) : Style.space(64); radius: Style.cornerRadius
       color: mouse.containsMouse ? Util.alpha(root.fg,0.07) : Util.alpha(root.fg,0.04)
       border.width: root.svc && root.svc.activeProfile === modelData.id ? 1 : 0
-      border.color: Color.accent
+      border.color: Commons.Color.accent
       MouseArea { id: mouse; anchors.fill: parent; hoverEnabled: true; onClicked: if(root.svc) root.svc.selectProfile(modelData.id) }
       Column {
         anchors.left: parent.left; anchors.leftMargin: Style.space(12); anchors.right: actions.left; anchors.rightMargin: Style.space(8); anchors.verticalCenter: parent.verticalCenter; spacing: Style.space(3)
-        Text { width: parent.width; text: (root.svc && root.svc.activeProfile === modelData.id ? "● " : "○ ") + modelData.name; color: root.svc && root.svc.activeProfile === modelData.id ? Color.accent : root.fg; font.family: root.fontFamily; font.pixelSize: Style.font.bodySmall; font.bold: true; elide: Text.ElideRight; renderType: Text.NativeRendering }
+        Text { width: parent.width; text: (root.svc && root.svc.activeProfile === modelData.id ? "● " : "○ ") + modelData.name; color: root.svc && root.svc.activeProfile === modelData.id ? Commons.Color.accent : root.fg; font.family: root.fontFamily; font.pixelSize: Style.font.bodySmall; font.bold: true; elide: Text.ElideRight; renderType: Text.NativeRendering }
         Text { width: parent.width; text: root.metaLine(modelData); color: Util.alpha(root.fg,0.5); font.family: root.fontFamily; font.pixelSize: Style.font.caption; elide: Text.ElideRight; renderType: Text.NativeRendering }
-        Text { width: parent.width; visible: String(modelData.lastError || "") !== ""; text: root.svc ? root.svc.t("profileLastError", modelData.lastError) : String(modelData.lastError || ""); color: Color.urgent; font.family: root.fontFamily; font.pixelSize: Style.font.caption; elide: Text.ElideRight; renderType: Text.NativeRendering }
+        Text { width: parent.width; visible: String(modelData.lastError || "") !== ""; text: root.svc ? root.svc.t("profileLastError", modelData.lastError) : String(modelData.lastError || ""); color: Commons.Color.urgent; font.family: root.fontFamily; font.pixelSize: Style.font.caption; elide: Text.ElideRight; renderType: Text.NativeRendering }
       }
       Row { id: actions; anchors.right: parent.right; anchors.rightMargin: Style.space(8); anchors.verticalCenter: parent.verticalCenter; spacing: Style.space(4)
-        PanelActionButton { iconText: "󰑐"; tooltipText: root.svc ? root.svc.t("updateProfile") : "Update"; foreground: root.fg; hoverColor: Color.accent; fontFamily: root.fontFamily; enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating; onClicked: root.svc.updateProfile(modelData.id,false) }
-        PanelActionButton { iconText: "󰇙"; tooltipText: root.svc ? root.svc.t("moreProfileActions") : "More actions"; foreground: root.fg; hoverColor: Color.accent; fontFamily: root.fontFamily; enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating; onClicked: { root.actionProfile = modelData; actionMenu.open() } }
+        PanelActionButton { iconText: "󰑐"; tooltipText: root.svc ? root.svc.t("updateProfile") : "Update"; foreground: root.fg; hoverColor: Commons.Color.accent; fontFamily: root.fontFamily; enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating; onClicked: root.svc.updateProfile(modelData.id,false) }
+        PanelActionButton { iconText: "󰇙"; tooltipText: root.svc ? root.svc.t("moreProfileActions") : "More actions"; foreground: root.fg; hoverColor: Commons.Color.accent; fontFamily: root.fontFamily; enabled: root.svc && root.svc.managerInstalled && !root.svc.profileMutating; onClicked: { root.actionProfile = modelData; actionMenu.open() } }
       }
     }
   }

@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property var openProfiles: null
   property var openDiagnostics: null
@@ -96,7 +97,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshNow") : "Refresh now"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       onClicked: {
         if (!root.svc) return
@@ -196,7 +197,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             text: "󰖂"
-            color: Color.accent
+            color: Commons.Color.accent
             font.family: root.fontFamily
             font.pixelSize: Style.font.display
             renderType: Text.NativeRendering
@@ -262,7 +263,7 @@ Item {
               iconText: "󰓅"
               tooltipText: root.svc ? root.svc.t("testNodeDelay") : "Test this node's latency"
               foreground: root.fg
-              hoverColor: Color.accent
+              hoverColor: Commons.Color.accent
               fontFamily: root.fontFamily
               enabled: root.leafNode !== ""
               onClicked: root.svc.testNode(root.leafNode)
@@ -336,7 +337,7 @@ Item {
 
         PanelSectionHeader {
           text: root.svc ? root.svc.t("needsAttention") : "Needs attention"
-          foreground: Color.urgent
+          foreground: Commons.Color.urgent
           fontFamily: root.fontFamily
         }
 
@@ -424,7 +425,7 @@ Item {
     property string glyph: ""
     property string caption: ""
     property string value: ""
-    property color foreground: Color.popups.text
+    property color foreground: Commons.Color.popups.text
     property string fontFamily: Style.font.family
 
     implicitHeight: cellColumn.implicitHeight + Style.space(18)

@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Small YAML editor for the two local override scopes. Runtime/source
 // inspection remains in ProfileDetail; this dialog owns only save-and-apply.
@@ -13,7 +14,7 @@ Popup {
   property bool globalScope: true
   property string profileId: ""
   property string profileName: ""
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property bool loading: false
   property bool saving: false
@@ -26,7 +27,7 @@ Popup {
   height: Style.space(500)
   anchors.centerIn: Overlay.overlay
   background: Rectangle {
-    color: Color.popups.background
+    color: Commons.Color.popups.background
     radius: Style.cornerRadius
     border.width: 1
     border.color: Util.alpha(root.foreground, 0.2)
@@ -105,7 +106,7 @@ Popup {
         width: Math.max(editorScroll.availableWidth, contentWidth)
         height: Math.max(editorScroll.availableHeight, contentHeight)
         color: root.foreground
-        selectionColor: Util.alpha(Color.accent, 0.35)
+        selectionColor: Util.alpha(Commons.Color.accent, 0.35)
         selectedTextColor: root.foreground
         font.family: "monospace"
         font.pixelSize: Style.font.caption
@@ -131,7 +132,7 @@ Popup {
       visible: root.errorText !== ""
       text: root.errorText
       textFormat: Text.PlainText
-      color: Color.urgent
+      color: Commons.Color.urgent
       font.family: root.fontFamily
       font.pixelSize: Style.font.caption
       wrapMode: Text.WordWrap

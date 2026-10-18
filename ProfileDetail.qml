@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Popup {
   id: root
@@ -13,14 +14,14 @@ Popup {
   property bool showRuntime: false
   property bool showOverride: false
   property string runtimeText: ""
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   modal: true; focus: true; padding: Style.space(18); width: Style.space(500)
   height: Overlay.overlay
     ? Math.min(Style.space(520), Math.max(Style.space(300), Overlay.overlay.height - Style.space(32)))
     : Style.space(460)
   anchors.centerIn: Overlay.overlay
-  background: Rectangle { color: Color.popups.background; radius: Style.cornerRadius; border.width: 1; border.color: Util.alpha(root.foreground,0.2) }
+  background: Rectangle { color: Commons.Color.popups.background; radius: Style.cornerRadius; border.width: 1; border.color: Util.alpha(root.foreground,0.2) }
   ColumnLayout {
     anchors.fill: parent
     spacing: Style.space(8)
@@ -43,7 +44,7 @@ Popup {
       Text {
         id: activeText
         text: root.svc && root.svc.activeProfile === root.profileId ? root.svc.t("activeProfile") : ""
-        color: Color.accent
+        color: Commons.Color.accent
         font.family: root.fontFamily
         font.pixelSize: Style.font.caption
       }

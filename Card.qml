@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // Bordered content block. Everything on a page sits in one of these so the
 // panel reads as a stack of cards rather than a wall of rows.
@@ -8,7 +9,7 @@ Rectangle {
 
   default property alias cardContent: inner.data
 
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property real pad: Style.space(12)
   property real gap: Style.space(10)
 

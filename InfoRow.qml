@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // Label on the left, value hard against the right edge. The value shrinks
 // before the label does, so long node names elide instead of pushing the
@@ -9,7 +10,7 @@ Item {
 
   property string label: ""
   property string value: ""
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property color valueColor: foreground
   property string fontFamily: Style.font.family
   property bool valueBold: false

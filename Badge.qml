@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // Small pill for node type, delay, rule kind. Tint carries the meaning; the
 // fill is always a wash of it so badges never fight the card behind them.
@@ -7,7 +8,7 @@ Rectangle {
   id: root
 
   property string text: ""
-  property color tint: Color.accent
+  property color tint: Commons.Color.accent
   property string fontFamily: Style.font.family
   property real fontSize: Style.font.caption
   property bool solid: false

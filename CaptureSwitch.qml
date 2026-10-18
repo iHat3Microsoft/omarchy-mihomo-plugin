@@ -1,6 +1,7 @@
 import QtQuick
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // System proxy and TUN are independent toggles. Clicking one must not
 // change the other — the old exclusive mode turned TUN off when the user
@@ -9,7 +10,7 @@ Row {
   id: root
 
   property var svc: null
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   spacing: Style.space(8)

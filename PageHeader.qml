@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // Page title on the left, page-specific controls on the right. Children of a
 // PageHeader land in the action row.
@@ -10,7 +11,7 @@ Item {
 
   property string title: ""
   property string subtitle: ""
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   implicitHeight: Math.max(titleColumn.implicitHeight, actionRow.implicitHeight) + Style.space(14)

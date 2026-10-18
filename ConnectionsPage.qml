@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property var addRuleForDomain: null
 
@@ -92,7 +93,7 @@ Item {
       fontFamily: root.fontFamily
       fontSize: Style.font.bodySmall
       bordered: true
-      accent: Color.urgent
+      accent: Commons.Color.urgent
       enabled: root.svc !== null && root.svc.connections.length > 0
       onClicked: root.svc.closeAllConnections()
     }
@@ -115,7 +116,7 @@ Item {
     anchors.topMargin: Style.space(12)
     placeholderText: root.svc ? root.svc.t("filterConnections") : "Filter host / process / chain / rule"
     foreground: root.fg
-    accent: Color.accent
+    accent: Commons.Color.accent
     font.family: root.fontFamily
     font.pixelSize: Style.font.bodySmall
     onTextChanged: root.filter = text
@@ -238,7 +239,7 @@ Item {
         iconText: "󰅖"
         tooltipText: root.svc ? root.svc.t("closeConnection") : "Close this connection"
         foreground: root.fg
-        hoverColor: Color.urgent
+        hoverColor: Commons.Color.urgent
         fontFamily: root.fontFamily
         onClicked: root.svc.closeConnection(connRow.modelData.id)
       }

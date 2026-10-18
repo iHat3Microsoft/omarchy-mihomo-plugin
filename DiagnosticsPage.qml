@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   function labelFor(id) {
@@ -24,9 +25,9 @@ Item {
   }
 
   function statusColor(status) {
-    if (status === "ok") return Color.accent
-    if (status === "error") return Color.urgent
-    return Color.muted
+    if (status === "ok") return Commons.Color.accent
+    if (status === "error") return Commons.Color.urgent
+    return Commons.Color.muted
   }
 
   function messageFor(check) {
@@ -52,7 +53,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshDiagnostics") : "Run diagnostics again"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc && root.svc.managerInstalled && !root.svc.diagnosticsLoading
       onClicked: root.svc.refreshDiagnostics()

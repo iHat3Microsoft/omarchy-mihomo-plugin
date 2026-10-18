@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Small, reusable context menu for actions that originate from a connection
 // or an effective rule row. It deliberately opens the existing rule editor so
@@ -12,7 +13,7 @@ Popup {
   id: root
 
   property var svc: null
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
   property string fontFamily: Style.font.family
   property string title: ""
   property string domain: ""
@@ -40,7 +41,7 @@ Popup {
   }
 
   background: Rectangle {
-    color: Color.popups.background
+    color: Commons.Color.popups.background
     radius: Style.cornerRadius
     border.width: 1
     border.color: Util.alpha(root.foreground, 0.2)
