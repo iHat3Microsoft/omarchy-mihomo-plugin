@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   readonly property bool editing: filterField.activeFocus
@@ -32,8 +33,8 @@ Item {
   // so a long list can be skimmed for "what actually leaves the machine".
   function targetColor(target) {
     if (target === "DIRECT") return Util.alpha(fg, 0.6)
-    if (target === "REJECT" || target === "REJECT-DROP") return Color.urgent
-    return Color.accent
+    if (target === "REJECT" || target === "REJECT-DROP") return Commons.Color.urgent
+    return Commons.Color.accent
   }
 
   function focusFilter() {
@@ -64,7 +65,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshRules") : "Reload rules"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc !== null && !root.svc.rulesLoading
       onClicked: root.svc.refreshRules()
@@ -88,7 +89,7 @@ Item {
     anchors.topMargin: Style.space(12)
     placeholderText: root.svc ? root.svc.t("filterRules") : "Filter domain / type / target"
     foreground: root.fg
-    accent: Color.accent
+    accent: Commons.Color.accent
     font.family: root.fontFamily
     font.pixelSize: Style.font.bodySmall
     onTextChanged: root.filter = text

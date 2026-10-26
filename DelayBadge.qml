@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // Latency readout for one proxy. Reads straight off the service so it updates
 // on its own during a probe and after every /proxies poll.
@@ -8,7 +9,7 @@ Badge {
 
   property var svc: null
   property string proxyName: ""
-  property color foreground: Color.popups.text
+  property color foreground: Commons.Color.popups.text
 
   readonly property int ms: svc ? svc.delayOf(proxyName) : -1
   readonly property bool busy: svc ? svc.isTesting(proxyName) : false
@@ -20,7 +21,7 @@ Badge {
     : String(ms)
 
   tint: busy || ms < 0 ? Util.alpha(foreground, 0.45)
-    : ms === 0 ? Color.urgent
-    : ms <= 250 ? Color.accent
+    : ms === 0 ? Commons.Color.urgent
+    : ms <= 250 ? Commons.Color.accent
     : Util.alpha(foreground, 0.62)
 }

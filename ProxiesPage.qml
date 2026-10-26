@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   // Group name -> expanded. Plain object so a poll that rebuilds the group
@@ -161,7 +162,7 @@ Item {
 
           Badge {
             text: card.groupType
-            tint: card.selectable ? Color.accent : Util.alpha(root.fg, 0.55)
+            tint: card.selectable ? Commons.Color.accent : Util.alpha(root.fg, 0.55)
             fontFamily: root.fontFamily
           }
 
@@ -197,7 +198,7 @@ Item {
           iconText: "󰓅"
           tooltipText: root.svc ? root.svc.t("testGroup") : "Test the whole group"
           foreground: root.fg
-          hoverColor: Color.accent
+          hoverColor: Commons.Color.accent
           fontFamily: root.fontFamily
           enabled: !root.svc.isTesting(card.groupName)
           onClicked: root.svc.testGroup(card.groupName)
@@ -210,7 +211,7 @@ Item {
             ? (card.open ? root.svc.t("collapseNodes") : root.svc.t("expandNodes"))
             : ""
           foreground: root.fg
-          hoverColor: Color.accent
+          hoverColor: Commons.Color.accent
           fontFamily: root.fontFamily
           onClicked: root.toggleGroup(card.groupName)
         }
@@ -275,7 +276,7 @@ Item {
 
     height: Style.space(30)
     radius: Style.cornerRadius
-    color: selected ? Util.alpha(Color.accent, 0.14)
+    color: selected ? Util.alpha(Commons.Color.accent, 0.14)
       : nodeMouse.containsMouse && selectable ? Util.alpha(root.fg, 0.07)
       : "transparent"
 
@@ -301,7 +302,7 @@ Item {
       anchors.leftMargin: Style.space(8)
       anchors.verticalCenter: parent.verticalCenter
       text: nodeRow.selected ? "󰄬" : ""
-      color: Color.accent
+      color: Commons.Color.accent
       font.family: root.fontFamily
       font.pixelSize: Style.font.bodySmall
       width: Style.space(14)
@@ -316,7 +317,7 @@ Item {
       anchors.verticalCenter: parent.verticalCenter
       text: nodeRow.nodeName
       textFormat: Text.PlainText
-      color: nodeRow.selected ? Color.accent : Util.alpha(root.fg, 0.85)
+      color: nodeRow.selected ? Commons.Color.accent : Util.alpha(root.fg, 0.85)
       font.family: root.fontFamily
       font.pixelSize: Style.font.bodySmall
       font.bold: nodeRow.selected

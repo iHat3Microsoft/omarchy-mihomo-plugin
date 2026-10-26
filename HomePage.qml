@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   // Which group the "当前节点" card is showing. Sticky across polls, but falls
@@ -79,7 +80,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshNow") : "Refresh now"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       onClicked: if (root.svc) root.svc.refresh()
     }
@@ -126,7 +127,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             text: "󰖂"
-            color: Color.accent
+            color: Commons.Color.accent
             font.family: root.fontFamily
             font.pixelSize: Style.font.display
             renderType: Text.NativeRendering
@@ -192,7 +193,7 @@ Item {
               iconText: "󰓅"
               tooltipText: root.svc ? root.svc.t("testNodeDelay") : "Test this node's latency"
               foreground: root.fg
-              hoverColor: Color.accent
+              hoverColor: Commons.Color.accent
               fontFamily: root.fontFamily
               enabled: root.leafNode !== ""
               onClicked: root.svc.testNode(root.leafNode)
@@ -403,7 +404,7 @@ Item {
           value: root.svc && root.svc.sysproxyEnabled
             ? root.svc.t("sysproxyOnValue", root.svc.sysproxyHost, root.svc.sysproxyPort)
             : (root.svc ? root.svc.t("disabled") : "Off")
-          valueColor: root.svc && root.svc.sysproxyEnabled ? Color.accent : Util.alpha(root.fg, 0.75)
+          valueColor: root.svc && root.svc.sysproxyEnabled ? Commons.Color.accent : Util.alpha(root.fg, 0.75)
           foreground: root.fg
           fontFamily: root.fontFamily
           valueBold: true
@@ -415,7 +416,7 @@ Item {
           value: root.svc && root.svc.tunEnabled
             ? root.svc.t("tunEnabled", root.svc.tunDevice, root.svc.tunStack)
             : (root.svc ? root.svc.t("disabled") : "Off")
-          valueColor: root.svc && root.svc.tunEnabled ? Color.accent : Util.alpha(root.fg, 0.75)
+          valueColor: root.svc && root.svc.tunEnabled ? Commons.Color.accent : Util.alpha(root.fg, 0.75)
           foreground: root.fg
           fontFamily: root.fontFamily
           valueBold: true
@@ -560,7 +561,7 @@ Item {
     property string glyph: ""
     property string caption: ""
     property string value: ""
-    property color foreground: Color.popups.text
+    property color foreground: Commons.Color.popups.text
     property string fontFamily: Style.font.family
 
     implicitHeight: cellColumn.implicitHeight + Style.space(18)

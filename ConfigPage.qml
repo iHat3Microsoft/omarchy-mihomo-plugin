@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import qs.Ui
 import qs.Commons
+import qs.Commons as Commons
 
 // Config = the handwritten yaml the core is running, plus rule-providers.
 // Node lists live on the proxy page; this page is the file and the rule sets.
@@ -9,7 +10,7 @@ Item {
   id: root
 
   property var svc: null
-  property color fg: Color.popups.text
+  property color fg: Commons.Color.popups.text
   property string fontFamily: Style.font.family
 
   function fmtUpdated(stamp) {
@@ -63,7 +64,7 @@ Item {
       iconText: "󰑐"
       tooltipText: root.svc ? root.svc.t("refreshConfig") : "Reload the file info and rule providers"
       foreground: root.fg
-      hoverColor: Color.accent
+      hoverColor: Commons.Color.accent
       fontFamily: root.fontFamily
       enabled: root.svc !== null && !root.svc.configLoading && !root.svc.providersLoading
       onClicked: root.svc.refreshConfig()
@@ -250,7 +251,7 @@ Item {
               + " · auto-route " + (root.svc.tunAutoRoute ? root.svc.t("autoRouteOn") : root.svc.t("autoRouteOff"))
               + (root.svc.tunDnsHijack !== "" ? " · hijack " + root.svc.tunDnsHijack : "")
           }
-          valueColor: root.svc && root.svc.tunEnabled ? Color.accent : Util.alpha(root.fg, 0.75)
+          valueColor: root.svc && root.svc.tunEnabled ? Commons.Color.accent : Util.alpha(root.fg, 0.75)
           foreground: root.fg
           fontFamily: root.fontFamily
           valueBold: true
@@ -334,7 +335,7 @@ Item {
             iconText: "󰑐"
             tooltipText: root.svc ? root.svc.t("updateRuleSet") : "Fetch this rule provider again"
             foreground: root.fg
-            hoverColor: Color.accent
+            hoverColor: Commons.Color.accent
             fontFamily: root.fontFamily
             enabled: modelData.vehicleType !== "Inline"
             onClicked: root.svc.updateRuleProvider(modelData.name)

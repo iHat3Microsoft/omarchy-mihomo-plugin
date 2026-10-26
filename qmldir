@@ -1,1 +1,17 @@
 singleton ServiceStore 1.0 ServiceStore.qml
+Badge 1.0 Badge.qml
+CaptureSwitch 1.0 CaptureSwitch.qml
+Card 1.0 Card.qml
+ConfigPage 1.0 ConfigPage.qml
+ConnectionsPage 1.0 ConnectionsPage.qml
+DelayBadge 1.0 DelayBadge.qml
+HomePage 1.0 HomePage.qml
+InfoRow 1.0 InfoRow.qml
+LanguageSwitch 1.0 LanguageSwitch.qml
+MihomoPanel 1.0 MihomoPanel.qml
+ModeSwitch 1.0 ModeSwitch.qml
+PageHeader 1.0 PageHeader.qml
+PlainTextDropdown 1.0 PlainTextDropdown.qml
+ProxiesPage 1.0 ProxiesPage.qml
+RulesPage 1.0 RulesPage.qml
+Service 1.0 Service.qml
